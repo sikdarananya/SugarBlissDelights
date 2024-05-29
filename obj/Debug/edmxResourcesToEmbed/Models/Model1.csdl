@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_tryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orderts" Relationship="Self.FK__ordert__item_id__7E37BEF6" FromRole="Items" ToRole="ordert" />
+  </EntityType>
+  <EntityType Name="ordert">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_id" Type="Int32" />
+    <Property Name="cust_id" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="total_price" Type="Int32" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__ordert__item_id__7E37BEF6" FromRole="ordert" ToRole="Items" />
+    <NavigationProperty Name="TBLUserInfo" Relationship="Self.FK__ordert__cust_id__7F2BE32F" FromRole="ordert" ToRole="TBLUserInfo" />
+  </EntityType>
+  <EntityType Name="TBLUserInfo">
+    <Key>
+      <PropertyRef Name="IdUs" />
+    </Key>
+    <Property Name="IdUs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsernameUs" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orderts" Relationship="Self.FK__ordert__cust_id__7F2BE32F" FromRole="TBLUserInfo" ToRole="ordert" />
+  </EntityType>
+  <Association Name="FK__ordert__item_id__7E37BEF6">
+    <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="ordert" Type="Self.ordert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordert">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ordert__cust_id__7F2BE32F">
+    <End Role="TBLUserInfo" Type="Self.TBLUserInfo" Multiplicity="0..1" />
+    <End Role="ordert" Type="Self.ordert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLUserInfo">
+        <PropertyRef Name="IdUs" />
+      </Principal>
+      <Dependent Role="ordert">
+        <PropertyRef Name="cust_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="project_tryEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="orderts" EntityType="Self.ordert" />
+    <EntitySet Name="TBLUserInfoes" EntityType="Self.TBLUserInfo" />
+    <AssociationSet Name="FK__ordert__item_id__7E37BEF6" Association="Self.FK__ordert__item_id__7E37BEF6">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ordert" EntitySet="orderts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ordert__cust_id__7F2BE32F" Association="Self.FK__ordert__cust_id__7F2BE32F">
+      <End Role="TBLUserInfo" EntitySet="TBLUserInfoes" />
+      <End Role="ordert" EntitySet="orderts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

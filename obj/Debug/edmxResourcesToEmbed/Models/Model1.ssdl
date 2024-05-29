@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_tryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" />
+    <Property Name="ItemType" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="varchar" MaxLength="50" />
+    <Property Name="Image" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ordert">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item_id" Type="int" />
+    <Property Name="cust_id" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="total_price" Type="int" />
+  </EntityType>
+  <EntityType Name="TBLUserInfo">
+    <Key>
+      <PropertyRef Name="IdUs" />
+    </Key>
+    <Property Name="IdUs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsernameUs" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__ordert__cust_id__7F2BE32F">
+    <End Role="TBLUserInfo" Type="Self.TBLUserInfo" Multiplicity="0..1" />
+    <End Role="ordert" Type="Self.ordert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLUserInfo">
+        <PropertyRef Name="IdUs" />
+      </Principal>
+      <Dependent Role="ordert">
+        <PropertyRef Name="cust_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ordert__item_id__7E37BEF6">
+    <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+    <End Role="ordert" Type="Self.ordert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordert">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="project_tryModelStoreContainer">
+    <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ordert" EntityType="Self.ordert" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLUserInfo" EntityType="Self.TBLUserInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ordert__cust_id__7F2BE32F" Association="Self.FK__ordert__cust_id__7F2BE32F">
+      <End Role="TBLUserInfo" EntitySet="TBLUserInfo" />
+      <End Role="ordert" EntitySet="ordert" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ordert__item_id__7E37BEF6" Association="Self.FK__ordert__item_id__7E37BEF6">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ordert" EntitySet="ordert" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

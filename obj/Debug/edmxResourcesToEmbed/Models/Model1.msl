@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="project_tryModelStoreContainer" CdmEntityContainer="project_tryEntities1">
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="project_tryModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderts">
+      <EntityTypeMapping TypeName="project_tryModel.ordert">
+        <MappingFragment StoreEntitySet="ordert">
+          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLUserInfoes">
+      <EntityTypeMapping TypeName="project_tryModel.TBLUserInfo">
+        <MappingFragment StoreEntitySet="TBLUserInfo">
+          <ScalarProperty Name="IdUs" ColumnName="IdUs" />
+          <ScalarProperty Name="UsernameUs" ColumnName="UsernameUs" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
