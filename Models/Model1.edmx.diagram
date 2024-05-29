@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6606ce2ac804ba1921c5662f4f8da6c" Name="Diagram1">
+        <EntityTypeShape EntityType="project_tryModel.Item" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_tryModel.ordert" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_tryModel.TBLUserInfo" Width="1.5" PointX="5.375" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="project_tryModel.FK__ordert__item_id__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="project_tryModel.FK__ordert__cust_id__7F2BE32F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
