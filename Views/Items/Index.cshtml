@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SweetShop_MVC.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    }
+</style>
+
+<h2>Index</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <button class="btn btn-dark" onclick="window.location.href='@Url.Action("Create", "Items")'">Add New Item</button>
+    <button class="btn btn-dark" onclick="window.location.href='@Url.Action("Index", "Account")'">User List</button>
+    @Html.ActionLink("See Orders", "FinalOrders", "Cart", new { area = "" }, new { @class = "btn btn-dark" })
+</p>
+@*@Html.ActionLink("See Orders", "FinalOrders", "Cart", new { area = "" }, new { @class = "btn btn-success" })*@
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image)" width="50" height="50" class="img-rounded" />
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+
+                <a href="@Url.Action("Edit", "Items", new {id = item.id})" class="btn btn-primary">Edit</a> |
+                <a href="@Url.Action("Details", "Items", new {id = item.id})" class="btn btn-info">Details</a> |
+                <a href="@Url.Action("Delete", "Items", new {id = item.id})" class="btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+    }
+
+</table>

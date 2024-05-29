@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SweetShop_MVC.Models.TBLUserInfo>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    body {
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    }
+</style>
+
+<h2>Index</h2>
+
+
+    @*@Html.ActionLink("Create New", "SignUp","Home")*@
+    @*<a href="~/Home/SignUp" class="btn btn-success">Create New</a>*@
+<p><a href="../Items/Index" class="btn btn-outline-dark">Back to Home</a></p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsernameUs)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmPassword)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsernameUs)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Password, "PasswordWithAsterisks")
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.ConfirmPassword)
+                </td>*@
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "ContactPage";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Sugar Bliss Delight</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+            font-family: Arial, sans-serif;
+        }
+
+        /*.container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }*/
+
+        .form-control {
+            border-radius: 20px;
+        }
+
+        .btn {
+            border-radius: 20px;
+        }
+
+        /*.btn-sm
+        {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1>Contact Us</h1>
+        <form id="contactForm" class="animate__animated animate__fadeInUp">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+<textarea class="form-control" id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            @*<div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>*@
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @*<button type="submit" class="btn btn-primary btn-block">Submit</button>*@
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Animate CSS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+    <script>// Form submission handling with validation
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            var form = event.target;
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        });</script>
+</body>
+</html>
+

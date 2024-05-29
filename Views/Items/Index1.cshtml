@@ -1,0 +1,118 @@
+﻿@model IEnumerable<SweetShop_MVC.Models.Item>
+
+@{
+    ViewBag.Title = "Index1";
+}
+<style>
+    body {
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    }
+</style>
+
+<h2>Products</h2>
+
+<p><a href="../Home/Index1" class="btn btn-outline-dark">Back to Home</a></p>
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image)" width="50" height="50" class="img-rounded" />
+            </td>
+            <td>
+                <a href="@Url.Action("AddToCart", "Cart", new { @ProductID = item.id})" class="btn btn-primary">Add to Cart</a>
+
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+<br />
+<br />
+@using (Html.BeginForm("Index1", "Items", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Match Any Document
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image)" width="50" height="50" class="img-rounded" />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AddToCart", "Cart", new { @ProductID = item.id})" class="btn btn-primary">Add to Cart</a>
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
